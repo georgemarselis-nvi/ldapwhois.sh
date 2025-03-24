@@ -7,7 +7,7 @@ ldapwhois() {
     if [[ "$ldapUser" =~ ^[a-zA-Z]+[[:space:]]?[a-zA-Z]*$ ]]; then
         # Assume it's a name (full name or single name)
         local searchFilter="(&(objectClass=user)(displayName=*${ldapUser}*))"
-        local searchAttribute="userPrincipalName givenName"
+        local searchAttribute="userPrincipalName displayName"
     else
         # Assume input is a username
         ldapUser="${ldapUser%%@*}@vetinst.no"
