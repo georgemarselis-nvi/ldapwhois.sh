@@ -25,7 +25,7 @@ ldapwhois() {
     fi  
 
     # Perform LDAP search
-    ldapsearch -LLL -Q -H ldap://dc02.vetinst.no:3268 -Y GSSAPI -b dc=vetinst,dc=no "$searchFilter" $searchAttribute | awk '/::/ {split($0, a, ":: "); cmd = "echo " a[2] " | base64 -d"; cmd | getline decoded; print a[1] ": " decoded "\n"; close(cmd); next} {print $0}'
+    ldapsearch -LLL -Q -H ldap://dc02.vetinst.no:3268 -Y GSSAPI -b dc=vetinst,dc=no "$searchFilter" $searchAttribute | awk '/::/ {split($0, a, ":: "); cmd = "echo " a[2] " | base64 -d"; cmd | getline decoded; print a[1] ": " decoded ""; close(cmd); next} {print $0}'
 
 }
 
